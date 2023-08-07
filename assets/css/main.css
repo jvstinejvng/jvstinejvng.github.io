@@ -3483,9 +3483,9 @@ input, select, textarea {
 			max-height: 50em;
 		}
 
-			#banner.major.alt {
+		#banner.major.alt {
 				opacity: 0.75;
-			}
+		}
 
 		#banner.style1:after {
 			background-color: #E68AA9;
