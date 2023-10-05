@@ -52,3 +52,63 @@
 	@import 'layout/main';
 	@import 'layout/footer';
 	@import 'layout/wrapper';
+
+
+/* Page Wrapper */
+
+#page-wrapper {
+	> section {
+		margin-bottom: 0;
+	}
+}
+
+
+
+		/* Nav */
+
+		#page-wrapper {
+			@include vendor('backface-visibility', 'hidden');
+			@include vendor('transition', 'transform #{_duration(navPanel)} ease');
+			padding-bottom: 1px;
+		}
+
+		body {
+			&.navPanel-visible {
+				#page-wrapper {
+					@include vendor('transform', 'translateX(#{_size(navPanel)})');
+				}
+
+				#titleBar {
+					@include vendor('transform', 'translateX(#{_size(navPanel)})');
+				}
+
+				#navPanel {
+					@include vendor('transform', 'translateX(0)');
+				}
+			}
+		}
+
+
+/* Container */
+
+	.container {
+		margin: 0 auto;
+		max-width: 100%;
+		width: 70em;
+
+		@include breakpoint('<=xlarge') {
+			width: 68em;
+		}
+
+		@include breakpoint('<=large') {
+			width: calc(100% - 80px);
+		}
+
+		@include breakpoint('<=medium') {
+			width: calc(100% - 100px);
+		}
+
+		@include breakpoint('<=small') {
+			width: calc(100% - 40px);
+		}
+	}
