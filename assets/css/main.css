@@ -2798,7 +2798,8 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 980px) {
+
+		/* @media screen and (max-width: 980px) {
 
 			.tiles {
 				margin: -2.5em 0 0 -2.5em;
@@ -2809,9 +2810,11 @@ input, select, textarea {
 					margin: 2.5em 0 0 2.5em;
 				}
 
-		}
+		} */
 
-		@media screen and (max-width: 736px) {
+
+
+		/* @media screen and (max-width: 736px) {
 
 			.tiles {
 				margin: -1.25em 0 0 -1.25em;
@@ -2829,7 +2832,7 @@ input, select, textarea {
 						transform: scale(1.0);
 					}
 
-		}
+		} */
 
 		@media screen and (max-width: 480px) {
 
@@ -2840,6 +2843,21 @@ input, select, textarea {
 				.tiles article {
 					width: 100%;
 					margin: 1.25em 0 0 0;
+				}
+
+		}
+
+		@media screen and (max-width: 480px) {
+
+			.tiles {
+				margin: 0;
+			}
+
+				.tiles article.style8 {
+					visibility: hidden;
+				}
+				.tiles article.style11 {
+					visibility: hidden;
 				}
 
 		}
