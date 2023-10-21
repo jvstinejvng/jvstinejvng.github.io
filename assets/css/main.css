@@ -2758,18 +2758,23 @@ form {
 					z-index: 12;
 					top: 0;
 					left: 0;
+					visibility: hidden;
+
 				}
 					.tiles article.style8 {
 						position: absolute;
 						z-index: 12;
 						top: 0;
 						left: 0;
+						visibility: hidden;
+
 					}
 					.tiles article.style11 {
 						position: absolute;
 						z-index: 12;
 						top: 0;
 						left: 0;
+						visibility: hidden;
 					}
 		}
 
