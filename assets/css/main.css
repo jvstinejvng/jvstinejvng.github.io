@@ -720,14 +720,6 @@ button:disabled,
 	z-index: 3;
 }
 
-.tiles article > a > :last-child {
-	margin: 0;
-}
-
-.tiles article > a:hover {
-	color: #ffffff !important;
-}
-
 .tiles article > a .content {
 	-moz-transition: max-height 0.5s ease, opacity 0.5s ease;
 	-webkit-transition: max-height 0.5s ease, opacity 0.5s ease;
@@ -758,10 +750,6 @@ body:not(.is-touch) .tiles article:hover .content {
 	opacity: 1;
 }
 
-* + .tiles {
-	margin-top: 2em;
-}
-
 body.is-preload .tiles article {
 	-moz-transform: scale(8.0);
 	-webkit-transform: scale(0.9);
@@ -776,17 +764,9 @@ body.is-touch .tiles article .content {
 }
 
 @media screen and (max-width: 980px) {
-	.tiles {
-		margin: -2.5em 0 0 -2.5em;
-	}
 
 	.tiles article {
 		width: calc(50% - 2.5em);
-		margin: 2.5em 0 0 2.5em;
-	}
-
-	.tiles {
-		margin: 0;
 	}
 
 	.tiles article.style5 {
@@ -816,7 +796,6 @@ body.is-touch .tiles article .content {
 @media screen and (max-width: 736px) {
 	.tiles article {
 		width: 100%;
-		margin: 1.25em 0 0 0;
 	}
 
 	.tiles article.style5 {
@@ -840,13 +819,10 @@ body.is-touch .tiles article .content {
 }
 
 @media screen and (max-width: 480px) {
-	.tiles {
-		margin: 0;
-	}
+
 
 	.tiles article {
 		width: 100%;
-		margin: 1.25em 0 0 0;
 	}
 
 	.tiles article.style5 {
@@ -1083,10 +1059,6 @@ body.is-touch .tiles article .content {
 
 	html, body {
 		overflow-x: hidden;
-	}
-
-	#header > .container {
-		padding: 10em 0 7em 0;
 	}
 
 	#nav {
