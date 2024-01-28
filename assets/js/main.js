@@ -1,5 +1,5 @@
 /*
-	Phantom by HTML5 UP
+	Story by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
@@ -7,14 +7,17 @@
 (function($) {
 
 	var	$window = $(window),
-		$body = $('body');
+		$body = $('body'),
+		$wrapper = $('#wrapper');
 
 	// Breakpoints.
 		breakpoints({
-			xlarge:  [ '1281px',  '1680px' ],
-			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ null,      '736px'  ]
+			xlarge:   [ '1281px',  '1680px' ],
+			large:    [ '981px',   '1280px' ],
+			medium:   [ '737px',   '980px'  ],
+			small:    [ '481px',   '736px'  ],
+			xsmall:   [ '361px',   '480px'  ],
+			xxsmall:  [ null,      '360px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -24,194 +27,315 @@
 			}, 100);
 		});
 
-	// Touch?
-		if (browser.mobile)
-			$body.addClass('is-touch');
+	// Browser fixes.
 
-	// Forms.
-		var $form = $('form');
+		// IE: Flexbox min-height bug.
+			if (browser.name == 'ie')
+				(function() {
 
-		// Auto-resizing textareas.
-			$form.find('textarea').each(function() {
+					var flexboxFixTimeoutId;
 
-				var $this = $(this),
-					$wrapper = $('<div class="textarea-wrapper"></div>'),
-					$submits = $this.find('input[type="submit"]');
+					$window.on('resize.flexbox-fix', function() {
 
-				$this
-					.wrap($wrapper)
-					.attr('rows', 1)
-					.css('overflow', 'hidden')
-					.css('resize', 'none')
-					.on('keydown', function(event) {
+						var $x = $('.fullscreen');
 
-						if (event.keyCode == 13
-						&&	event.ctrlKey) {
+						clearTimeout(flexboxFixTimeoutId);
 
-							event.preventDefault();
-							event.stopPropagation();
+						flexboxFixTimeoutId = setTimeout(function() {
 
-							$(this).blur();
+							if ($x.prop('scrollHeight') > $window.height())
+								$x.css('height', 'auto');
+							else
+								$x.css('height', '100vh');
 
-						}
+						}, 250);
 
-					})
-					.on('blur focus', function() {
-						$this.val($.trim($this.val()));
-					})
-					.on('input blur focus --init', function() {
+					}).triggerHandler('resize.flexbox-fix');
 
-						$wrapper
-							.css('height', $this.height());
+				})();
 
-						$this
-							.css('height', 'auto')
-							.css('height', $this.prop('scrollHeight') + 'px');
+		// Object fit workaround.
+			if (!browser.canUse('object-fit'))
+				(function() {
 
-					})
-					.on('keyup', function(event) {
+					$('.banner .image, .spotlight .image').each(function() {
 
-						if (event.keyCode == 9)
+						var $this = $(this),
+							$img = $this.children('img'),
+							positionClass = $this.parent().attr('class').match(/image-position-([a-z]+)/);
+
+						// Set image.
 							$this
-								.select();
+								.css('background-image', 'url("' + $img.attr('src') + '")')
+								.css('background-repeat', 'no-repeat')
+								.css('background-size', 'cover');
 
-					})
-					.triggerHandler('--init');
+						// Set position.
+							switch (positionClass.length > 1 ? positionClass[1] : '') {
 
-				// Fix.
-					if (browser.name == 'ie'
-					||	browser.mobile)
-						$this
-							.css('max-height', '10em')
-							.css('overflow-y', 'auto');
+								case 'left':
+									$this.css('background-position', 'left');
+									break;
 
+								case 'right':
+									$this.css('background-position', 'right');
+									break;
+
+								default:
+								case 'center':
+									$this.css('background-position', 'center');
+									break;
+
+							}
+
+						// Hide original.
+							$img.css('opacity', '0');
+
+					});
+
+				})();
+
+	// Smooth scroll.
+		$('.smooth-scroll').scrolly();
+		$('.smooth-scroll-middle').scrolly({ anchor: 'middle' });
+
+	// Wrapper.
+		$wrapper.children()
+			.scrollex({
+				top:		'30vh',
+				bottom:		'30vh',
+				initialize:	function() {
+					$(this).addClass('is-inactive');
+				},
+				terminate:	function() {
+					$(this).removeClass('is-inactive');
+				},
+				enter:		function() {
+					$(this).removeClass('is-inactive');
+				},
+				leave:		function() {
+
+					var $this = $(this);
+
+					if ($this.hasClass('onscroll-bidirectional'))
+						$this.addClass('is-inactive');
+
+				}
 			});
 
-		
-	// Nav.
+	// Items.
+		$('.items')
+			.scrollex({
+				top:		'30vh',
+				bottom:		'30vh',
+				delay:		50,
+				initialize:	function() {
+					$(this).addClass('is-inactive');
+				},
+				terminate:	function() {
+					$(this).removeClass('is-inactive');
+				},
+				enter:		function() {
+					$(this).removeClass('is-inactive');
+				},
+				leave:		function() {
 
-		// Title Bar.
-			$(
-				'<div id="titleBar">' +
-					'<a href="#navPanel" class="toggle"></a>' +
-				'</div>'
-			)
-				.appendTo($body);
+					var $this = $(this);
 
-		// Panel.
-			$(
-				'<div id="navPanel">' +
-					'<nav>' +
-						$('#nav').navList() +
-					'</nav>' +
-				'</div>'
-			)
-				.appendTo($body)
-				.panel({
-					delay: 500,
-					hideOnClick: true,
-					hideOnSwipe: true,
-					resetScroll: true,
-					resetForms: true,
-					side: 'left',
-					target: $body,
-					visibleClass: 'navPanel-visible'
+					if ($this.hasClass('onscroll-bidirectional'))
+						$this.addClass('is-inactive');
+
+				}
+			})
+			.children()
+				.wrapInner('<div class="inner"></div>');
+
+	// Gallery.
+		$('.gallery')
+			.wrapInner('<div class="inner"></div>')
+			.prepend(browser.mobile ? '' : '<div class="forward"></div><div class="backward"></div>')
+			.scrollex({
+				top:		'30vh',
+				bottom:		'30vh',
+				delay:		50,
+				initialize:	function() {
+					$(this).addClass('is-inactive');
+				},
+				terminate:	function() {
+					$(this).removeClass('is-inactive');
+				},
+				enter:		function() {
+					$(this).removeClass('is-inactive');
+				},
+				leave:		function() {
+
+					var $this = $(this);
+
+					if ($this.hasClass('onscroll-bidirectional'))
+						$this.addClass('is-inactive');
+
+				}
+			})
+			.children('.inner')
+				//.css('overflow', 'hidden')
+				.css('overflow-y', browser.mobile ? 'visible' : 'hidden')
+				.css('overflow-x', browser.mobile ? 'scroll' : 'hidden')
+				.scrollLeft(0);
+
+		// Style #1.
+			// ...
+
+		// Style #2.
+			$('.gallery')
+				.on('wheel', '.inner', function(event) {
+
+					var	$this = $(this),
+						delta = (event.originalEvent.deltaX * 10);
+
+					// Cap delta.
+						if (delta > 0)
+							delta = Math.min(25, delta);
+						else if (delta < 0)
+							delta = Math.max(-25, delta);
+
+					// Scroll.
+						$this.scrollLeft( $this.scrollLeft() + delta );
+
+				})
+				.on('mouseenter', '.forward, .backward', function(event) {
+
+					var $this = $(this),
+						$inner = $this.siblings('.inner'),
+						direction = ($this.hasClass('forward') ? 1 : -1);
+
+					// Clear move interval.
+						clearInterval(this._gallery_moveIntervalId);
+
+					// Start interval.
+						this._gallery_moveIntervalId = setInterval(function() {
+							$inner.scrollLeft( $inner.scrollLeft() + (5 * direction) );
+						}, 10);
+
+				})
+				.on('mouseleave', '.forward, .backward', function(event) {
+
+					// Clear move interval.
+						clearInterval(this._gallery_moveIntervalId);
+
 				});
 
-			
+		// Lightbox.
+			$('.gallery.lightbox')
+				.on('click', 'a', function(event) {
 
+					var $a = $(this),
+						$gallery = $a.parents('.gallery'),
+						$modal = $gallery.children('.modal'),
+						$modalImg = $modal.find('img'),
+						href = $a.attr('href');
 
-	// // Menu.
-	// 	var $menu = $('#menu');
+					// Not an image? Bail.
+						if (!href.match(/\.(jpg|gif|png|mp4)$/))
+							return;
 
-	// 	$menu.wrapInner('<div class="inner"></div>');
+					// Prevent default.
+						event.preventDefault();
+						event.stopPropagation();
 
-	// 	$menu._locked = false;
+					// Locked? Bail.
+						if ($modal[0]._locked)
+							return;
 
-	// 	$menu._lock = function() {
+					// Lock.
+						$modal[0]._locked = true;
 
-	// 		if ($menu._locked)
-	// 			return false;
+					// Set src.
+						$modalImg.attr('src', href);
 
-	// 		$menu._locked = true;
+					// Set visible.
+						$modal.addClass('visible');
 
-	// 		window.setTimeout(function() {
-	// 			$menu._locked = false;
-	// 		}, 350);
+					// Focus.
+						$modal.focus();
 
-	// 		return true;
+					// Delay.
+						setTimeout(function() {
 
-	// 	};
+							// Unlock.
+								$modal[0]._locked = false;
 
-	// 	$menu._show = function() {
+						}, 600);
 
-	// 		if ($menu._lock())
-	// 			$body.addClass('is-menu-visible');
+				})
+				.on('click', '.modal', function(event) {
 
-	// 	};
+					var $modal = $(this),
+						$modalImg = $modal.find('img');
 
-	// 	$menu._hide = function() {
+					// Locked? Bail.
+						if ($modal[0]._locked)
+							return;
 
-	// 		if ($menu._lock())
-	// 			$body.removeClass('is-menu-visible');
+					// Already hidden? Bail.
+						if (!$modal.hasClass('visible'))
+							return;
 
-	// 	};
+					// Lock.
+						$modal[0]._locked = true;
 
-	// 	$menu._toggle = function() {
+					// Clear visible, loaded.
+						$modal
+							.removeClass('loaded')
 
-	// 		if ($menu._lock())
-	// 			$body.toggleClass('is-menu-visible');
+					// Delay.
+						setTimeout(function() {
 
-	// 	};
+							$modal
+								.removeClass('visible')
 
-	// 	$menu
-	// 		.appendTo($body)
-	// 		.on('click', function(event) {
-	// 			event.stopPropagation();
-	// 		})
-	// 		.on('click', 'a', function(event) {
+							setTimeout(function() {
 
-	// 			var href = $(this).attr('href');
+								// Clear src.
+									$modalImg.attr('src', '');
 
-	// 			event.preventDefault();
-	// 			event.stopPropagation();
+								// Unlock.
+									$modal[0]._locked = false;
 
-	// 			// Hide.
-	// 				$menu._hide();
+								// Focus.
+									$body.focus();
 
-	// 			// Redirect.
-	// 				if (href == '#menu')
-	// 					return;
+							}, 475);
 
-	// 				window.setTimeout(function() {
-	// 					window.location.href = href;
-	// 				}, 350);
+						}, 125);
 
-	// 		})
-	// 		.append('<a class="close" href="#menu">Close</a>');
+				})
+				.on('keypress', '.modal', function(event) {
 
-	// 	$body
-	// 		.on('click', 'a[href="#menu"]', function(event) {
+					var $modal = $(this);
 
-	// 			event.stopPropagation();
-	// 			event.preventDefault();
+					// Escape? Hide modal.
+						if (event.keyCode == 27)
+							$modal.trigger('click');
 
-	// 			// Toggle.
-	// 				$menu._toggle();
+				})
+				.prepend('<div class="modal" tabIndex="-1"><div class="inner"><img src="" /></div></div>')
+					.find('img')
+						.on('load', function(event) {
 
-	// 		})
-	// 		.on('click', function(event) {
+							var $modalImg = $(this),
+								$modal = $modalImg.parents('.modal');
 
-	// 			// Hide.
-	// 				$menu._hide();
+							setTimeout(function() {
 
-	// 		})
-	// 		.on('keydown', function(event) {
+								// No longer visible? Bail.
+									if (!$modal.hasClass('visible'))
+										return;
 
-	// 			// Hide on escape.
-	// 				if (event.keyCode == 27)
-	// 					$menu._hide();
+								// Set loaded.
+									$modal.addClass('loaded');
 
-	// 		});
+							}, 275);
+
+						});
 
 })(jQuery);
