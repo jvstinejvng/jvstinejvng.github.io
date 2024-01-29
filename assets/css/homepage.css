@@ -8,7 +8,7 @@
 */
 
 html, body, div, span, applet, object,
-iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+iframe, h1, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
 code, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b,
@@ -45,8 +45,6 @@ blockquote, q {
 		content: '';
 		content: none;
 	}
-
-
 
 body {
 	-webkit-text-size-adjust: none;
@@ -106,27 +104,21 @@ mark {
 	}
 
 		@media screen and (max-width: 1680px) {
-
 			html {
 				font-size: 14pt;
 			}
-
 		}
 
 		@media screen and (max-width: 1280px) {
-
 			html {
 				font-size: 12pt;
 			}
-
 		}
 
 		@media screen and (max-width: 736px) {
-
 			html {
 				font-size: 11pt;
 			}
-
 		}
 
 		@media screen and (max-width: 360px) {
@@ -177,14 +169,14 @@ mark {
 			font-size: 1.25rem;
 		}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1 {
 		font-weight: 300;
 		line-height: 1.375;
 		letter-spacing: -0.05em;
 		margin: 0 0 1rem 0;
 	}
 
-		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+		h1 a{
 			color: inherit;
 			text-decoration: none;
 		}
@@ -194,77 +186,6 @@ mark {
 		line-height: 1.2;
 	}
 
-	h2 {
-		font-size: 2.25rem;
-	}
-
-	h3 {
-		font-size: 1.5rem;
-	}
-
-	h4 {
-		font-size: 1.1rem;
-	}
-
-	h5 {
-		font-size: 0.9rem;
-	}
-
-	h6 {
-		font-size: 0.7rem;
-	}
-
-	sub {
-		font-size: 0.8rem;
-		position: relative;
-		top: 0.5rem;
-	}
-
-	sup {
-		font-size: 0.8rem;
-		position: relative;
-		top: -0.5rem;
-	}
-
-	blockquote {
-		border-left: solid 4px;
-		font-style: italic;
-		margin: 0 0 2rem 0;
-		padding: 0.5rem 0 0.5rem 2rem;
-	}
-
-	code {
-		border-radius: 4px;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0.25rem;
-		padding: 0.25rem 0.325rem;
-	}
-
-	pre {
-		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0 2rem 0;
-	}
-
-		pre code {
-			display: block;
-			line-height: 1.5;
-			padding: 0.75rem 1rem;
-			overflow-x: auto;
-		}
-
-	hr {
-		border: 0;
-		border-bottom: solid 1px;
-		margin: 2.5rem 0;
-	}
-
-		hr.major {
-			margin: 3.5rem 0;
-		}
-
 	.align-left {
 		text-align: left;
 	}
@@ -273,9 +194,7 @@ mark {
 		text-align: center;
 	}
 
-	.align-right {
-		text-align: right;
-	}
+
 
 	@media screen and (max-width: 736px) {
 
@@ -287,17 +206,6 @@ mark {
 			font-size: 2.5rem;
 		}
 
-		h2 {
-			font-size: 2rem;
-		}
-
-		h3 {
-			font-size: 1.25rem;
-		}
-
-		h4 {
-			font-size: 1rem;
-		}
 
 	}
 
@@ -314,7 +222,7 @@ mark {
 		color: #000000;
 	}
 
-	h1, h2, h3, h4, h5, h6 {
+	h1 {
 		color: #000000;
 	}
 
@@ -686,19 +594,7 @@ mark {
 		font-size: 1.375rem;
 	}
 
-	header h2 + p {
-		font-size: 1.25rem;
-	}
 
-	header h3 + p {
-		font-size: 1.1rem;
-	}
-
-	header h4 + p,
-	header h5 + p,
-	header h6 + p {
-		font-size: 0.9rem;
-	}
 
 	header p {
 		color: rgba(0, 0, 0, 0.75);
@@ -721,35 +617,6 @@ mark {
 		opacity: 0;
 	}
 
-	.banner.onload-content-fade-down .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	body.is-preload .banner.onload-content-fade-down .content {
-		-moz-transform: translateY(-1rem);
-		-webkit-transform: translateY(-1rem);
-		-ms-transform: translateY(-1rem);
-		transform: translateY(-1rem);
-		opacity: 0;
-	}
-
-	.banner.onload-content-fade-left .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	body.is-preload .banner.onload-content-fade-left .content {
-		-moz-transform: translateX(1rem);
-		-webkit-transform: translateX(1rem);
-		-ms-transform: translateX(1rem);
-		transform: translateX(1rem);
-		opacity: 0;
-	}
 
 	.banner.onload-content-fade-right .content {
 		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
@@ -766,46 +633,6 @@ mark {
 		opacity: 0;
 	}
 
-	.banner.onload-content-fade-in .content {
-		-moz-transition: opacity 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out;
-	}
-
-	body.is-preload .banner.onload-content-fade-in .content {
-		opacity: 0;
-	}
-
-	.banner.onload-image-fade-up .image {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-		.banner.onload-image-fade-up .image img {
-			-moz-transition: opacity 0.75s ease-in-out;
-			-webkit-transition: opacity 0.75s ease-in-out;
-			-ms-transition: opacity 0.75s ease-in-out;
-			transition: opacity 0.75s ease-in-out;
-			-moz-transition-delay: 0.5625s;
-			-webkit-transition-delay: 0.5625s;
-			-ms-transition-delay: 0.5625s;
-			transition-delay: 0.5625s;
-		}
-
-	body.is-preload .banner.onload-image-fade-up .image {
-		-moz-transform: translateY(1rem);
-		-webkit-transform: translateY(1rem);
-		-ms-transform: translateY(1rem);
-		transform: translateY(1rem);
-		opacity: 0;
-	}
-
-		body.is-preload .banner.onload-image-fade-up .image img {
-			opacity: 0;
-		}
 
 	.banner.onload-image-fade-down .image {
 		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
@@ -908,210 +735,8 @@ mark {
 		opacity: 0;
 	}
 
-	.banner.onscroll-content-fade-up .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-content-fade-up.is-inactive .content {
-		-moz-transform: translateY(1rem);
-		-webkit-transform: translateY(1rem);
-		-ms-transform: translateY(1rem);
-		transform: translateY(1rem);
-		opacity: 0;
-	}
-
-	.banner.onscroll-content-fade-down .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-content-fade-down.is-inactive .content {
-		-moz-transform: translateY(-1rem);
-		-webkit-transform: translateY(-1rem);
-		-ms-transform: translateY(-1rem);
-		transform: translateY(-1rem);
-		opacity: 0;
-	}
-
-	.banner.onscroll-content-fade-left .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-content-fade-left.is-inactive .content {
-		-moz-transform: translateX(1rem);
-		-webkit-transform: translateX(1rem);
-		-ms-transform: translateX(1rem);
-		transform: translateX(1rem);
-		opacity: 0;
-	}
-
-	.banner.onscroll-content-fade-right .content {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-content-fade-right.is-inactive .content {
-		-moz-transform: translateX(-1rem);
-		-webkit-transform: translateX(-1rem);
-		-ms-transform: translateX(-1rem);
-		transform: translateX(-1rem);
-		opacity: 0;
-	}
-
-	.banner.onscroll-content-fade-in .content {
-		-moz-transition: opacity 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-content-fade-in.is-inactive .content {
-		opacity: 0;
-	}
-
-	.banner.onscroll-image-fade-up .image {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-		.banner.onscroll-image-fade-up .image img {
-			-moz-transition: opacity 0.75s ease-in-out;
-			-webkit-transition: opacity 0.75s ease-in-out;
-			-ms-transition: opacity 0.75s ease-in-out;
-			transition: opacity 0.75s ease-in-out;
-			-moz-transition-delay: 0.5625s;
-			-webkit-transition-delay: 0.5625s;
-			-ms-transition-delay: 0.5625s;
-			transition-delay: 0.5625s;
-		}
-
-	.banner.onscroll-image-fade-up.is-inactive .image {
-		-moz-transform: translateY(1rem);
-		-webkit-transform: translateY(1rem);
-		-ms-transform: translateY(1rem);
-		transform: translateY(1rem);
-		opacity: 0;
-	}
-
-		.banner.onscroll-image-fade-up.is-inactive .image img {
-			opacity: 0;
-		}
-
-	.banner.onscroll-image-fade-down .image {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-		.banner.onscroll-image-fade-down .image img {
-			-moz-transition: opacity 0.75s ease-in-out;
-			-webkit-transition: opacity 0.75s ease-in-out;
-			-ms-transition: opacity 0.75s ease-in-out;
-			transition: opacity 0.75s ease-in-out;
-			-moz-transition-delay: 0.5625s;
-			-webkit-transition-delay: 0.5625s;
-			-ms-transition-delay: 0.5625s;
-			transition-delay: 0.5625s;
-		}
-
-	.banner.onscroll-image-fade-down.is-inactive .image {
-		-moz-transform: translateY(-1rem);
-		-webkit-transform: translateY(-1rem);
-		-ms-transform: translateY(-1rem);
-		transform: translateY(-1rem);
-		opacity: 0;
-	}
-
-		.banner.onscroll-image-fade-down.is-inactive .image img {
-			opacity: 0;
-		}
-
-	.banner.onscroll-image-fade-left .image {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-		.banner.onscroll-image-fade-left .image img {
-			-moz-transition: opacity 0.75s ease-in-out;
-			-webkit-transition: opacity 0.75s ease-in-out;
-			-ms-transition: opacity 0.75s ease-in-out;
-			transition: opacity 0.75s ease-in-out;
-			-moz-transition-delay: 0.5625s;
-			-webkit-transition-delay: 0.5625s;
-			-ms-transition-delay: 0.5625s;
-			transition-delay: 0.5625s;
-		}
-
-	.banner.onscroll-image-fade-left.is-inactive .image {
-		-moz-transform: translateX(1rem);
-		-webkit-transform: translateX(1rem);
-		-ms-transform: translateX(1rem);
-		transform: translateX(1rem);
-		opacity: 0;
-	}
-
-		.banner.onscroll-image-fade-left.is-inactive .image img {
-			opacity: 0;
-		}
-
-	.banner.onscroll-image-fade-right .image {
-		-moz-transition: opacity 0.75s ease-in-out, -moz-transform 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out, -webkit-transform 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out, -ms-transform 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out, transform 0.75s ease-in-out;
-	}
-
-		.banner.onscroll-image-fade-right .image img {
-			-moz-transition: opacity 0.75s ease-in-out;
-			-webkit-transition: opacity 0.75s ease-in-out;
-			-ms-transition: opacity 0.75s ease-in-out;
-			transition: opacity 0.75s ease-in-out;
-			-moz-transition-delay: 0.5625s;
-			-webkit-transition-delay: 0.5625s;
-			-ms-transition-delay: 0.5625s;
-			transition-delay: 0.5625s;
-		}
-
-	.banner.onscroll-image-fade-right.is-inactive .image {
-		-moz-transform: translateX(-1rem);
-		-webkit-transform: translateX(-1rem);
-		-ms-transform: translateX(-1rem);
-		transform: translateX(-1rem);
-		opacity: 0;
-	}
-
-		.banner.onscroll-image-fade-right.is-inactive .image img {
-			opacity: 0;
-		}
-
-	.banner.onscroll-image-fade-in .image img {
-		-moz-transition: opacity 0.75s ease-in-out;
-		-webkit-transition: opacity 0.75s ease-in-out;
-		-ms-transition: opacity 0.75s ease-in-out;
-		transition: opacity 0.75s ease-in-out;
-	}
-
-	.banner.onscroll-image-fade-in.is-inactive .image img {
-		opacity: 0;
-	}
 
 /* Banner (style1) */
-
 	.banner.style1 {
 		-moz-align-items: -moz-stretch;
 		-webkit-align-items: -webkit-stretch;
@@ -1289,17 +914,6 @@ mark {
 			text-align: center;
 		}
 
-		.banner.style1.content-align-right {
-			text-align: right;
-		}
-
-			@media screen and (orientation: portrait) {
-
-				.banner.style1.content-align-right {
-					text-align: center;
-				}
-
-			}
 
 		.banner.style1.image-position-left .image img {
 			-moz-object-position: left;
@@ -1407,7 +1021,6 @@ mark {
 	}
 
 	@media screen and (max-width: 980px) {
-
 		.index > * > header {
 			width: 11rem;
 		}
@@ -1415,7 +1028,6 @@ mark {
 	}
 
 	@media screen and (max-width: 736px) {
-
 		.index > * > header {
 			width: 10rem;
 		}
@@ -1423,7 +1035,6 @@ mark {
 	}
 
 	@media screen and (max-width: 480px) {
-
 		.index > * {
 			-moz-flex-direction: column;
 			-webkit-flex-direction: column;
