@@ -1,12 +1,6 @@
 @import url(fontawesome-all.min.css);
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i");
 
-/*
-	Story by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 html, body, div, span, applet, object,
 iframe, h1, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -162,7 +156,7 @@ mark {
 	}
 
 	p {
-		margin: 0 0 2rem 0;
+		margin: -1rem 0 2rem 0;
 	}
 
 		p.major {
@@ -173,7 +167,6 @@ mark {
 		font-weight: 300;
 		line-height: 1.375;
 		letter-spacing: -0.05em;
-		margin: 0 0 1rem 0;
 	}
 
 		h1 a{
@@ -183,7 +176,7 @@ mark {
 
 	h1 {
 		font-size: 3.5rem;
-		line-height: 1.2;
+		line-height: 1;
 	}
 
 	.align-left {
@@ -586,7 +579,6 @@ mark {
 
 	header p {
 		position: relative;
-		margin: -0.65rem 0 1.5rem 0;
 		font-style: italic;
 	}
 
@@ -760,7 +752,7 @@ mark {
 	}
 
 		.banner.style1 .content {
-			padding: 7rem 7rem 5rem 7rem ;
+			padding: 5rem 5rem 5rem 7rem ;
 			-moz-align-self: center;
 			-webkit-align-self: center;
 			-ms-align-self: center;
